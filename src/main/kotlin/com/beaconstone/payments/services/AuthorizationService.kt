@@ -15,7 +15,7 @@ import com.beaconstone.payments.repositories.authorizationRepository
  * The capture mode of the selected profile travels with the stored record.
  */
 fun authorizePayment(payment: Payment): AuthorizationRecord {
-    val profile = authProfiles.forNetwork(payment.network)
+    val profile = authProfiles.default
     val adapter = adapterFor(payment.network)
 
     val result = adapter.authorize(payment, profile)
